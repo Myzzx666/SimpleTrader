@@ -22,6 +22,7 @@ namespace SimpleTrader.FinancialModelingPrepAPI
         public async Task<T> GetAsync<T>(string uri)
         {
             HttpResponseMessage response = await _client.GetAsync($"{uri}?apikey={_apiKey}");
+            response.EnsureSuccessStatusCode();
             string jsonResponse = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<T>(jsonResponse);

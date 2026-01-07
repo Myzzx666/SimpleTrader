@@ -101,7 +101,8 @@
      Margin="20"
      FontSize="18"
      Text="{Binding StatusMessage}"
-     TextAlignment="Center" />
+     TextAlignment="Center" 
+                Foreground="Red"/>
         </Grid>
     </Grid>
 </UserControl>
