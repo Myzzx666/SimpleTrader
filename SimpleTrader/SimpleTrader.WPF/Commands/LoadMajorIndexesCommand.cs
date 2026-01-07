@@ -23,11 +23,24 @@ namespace SimpleTrader.WPF.Commands
         public override async Task ExecuteAsync(object parameter)
         {
             _majorIndexListingViewModel.IsLoading = true;
-
+            await Task.Delay(3000);
             //等所有任务都执行完毕(任务并行)
-            await Task.WhenAll(LoadDowJones(), LoadNasdaq(), LoadSP500());
-
-            _majorIndexListingViewModel.IsLoading = false;
+            //await Task.WhenAll(LoadDowJones(), LoadNasdaq(), LoadSP500());
+            try
+            {
+                await Task.WhenAll(LoadDowJones(), LoadNasdaq(), LoadSP500());
+                //_majorIndexListingViewModel.IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+                //触发OnPropertyChanged事件
+                _majorIndexListingViewModel.StatusMessage = ex.Message;
+            }
+            finally
+            {
+                _majorIndexListingViewModel.IsLoading = false;
+            }
+            //_majorIndexListingViewModel.IsLoading = false;
         }
 
         private async Task LoadDowJones()

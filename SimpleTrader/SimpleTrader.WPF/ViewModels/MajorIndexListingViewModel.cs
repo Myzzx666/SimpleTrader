@@ -11,6 +11,21 @@ namespace SimpleTrader.WPF.ViewModels
 {
     public class MajorIndexListingViewModel : ViewModelBase
     {
+        private bool _hasMessage => !string.IsNullOrEmpty(StatusMessage); //不为空
+        public bool HasMessage => _hasMessage;
+        private string _statusMessage = string.Empty;
+        public string StatusMessage
+        {
+            get { return _statusMessage; }
+            set 
+            { 
+                _statusMessage = value; 
+                OnPropertyChanged(nameof(StatusMessage));
+                OnPropertyChanged(nameof(HasMessage));
+            }
+
+        }
+       
         private MajorIndex _dowJones;
         public MajorIndex DowJones
         {
