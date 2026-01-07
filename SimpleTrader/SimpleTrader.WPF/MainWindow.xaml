@@ -27,6 +27,7 @@
                 </Style>
             </Grid.Style>
             
+            <!--默认导航Menu组件-->
             <controls:NavigationBar/>
         </Grid>
         

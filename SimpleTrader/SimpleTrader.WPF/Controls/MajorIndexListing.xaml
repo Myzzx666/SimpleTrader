@@ -74,6 +74,7 @@
                 Thickness="5"
                 Color="{StaticResource BrushPrimary2}" />
 
+            <!--加载中的Loading.....text(文本)-->
             <TextBlock
                 Grid.Row="1"
                 Margin="20"

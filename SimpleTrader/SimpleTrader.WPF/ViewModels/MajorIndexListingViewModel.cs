@@ -67,6 +67,7 @@ namespace SimpleTrader.WPF.ViewModels
             }
         }
 
+        //可以由Control控件绑定
         public ICommand LoadMajorIndexesCommand { get; }
 
         public MajorIndexListingViewModel(IMajorIndexService majorIndexService)
@@ -77,7 +78,7 @@ namespace SimpleTrader.WPF.ViewModels
         public static MajorIndexListingViewModel LoadMajorIndexViewModel(IMajorIndexService majorIndexService)
         {
             MajorIndexListingViewModel majorIndexViewModel = new MajorIndexListingViewModel(majorIndexService);
-
+            //手动执行Command命令
             majorIndexViewModel.LoadMajorIndexesCommand.Execute(null);
 
             return majorIndexViewModel;

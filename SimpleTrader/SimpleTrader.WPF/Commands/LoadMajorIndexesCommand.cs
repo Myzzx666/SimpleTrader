@@ -24,6 +24,7 @@ namespace SimpleTrader.WPF.Commands
         {
             _majorIndexListingViewModel.IsLoading = true;
 
+            //等所有任务都执行完毕(任务并行)
             await Task.WhenAll(LoadDowJones(), LoadNasdaq(), LoadSP500());
 
             _majorIndexListingViewModel.IsLoading = false;

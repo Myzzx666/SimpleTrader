@@ -18,7 +18,7 @@
         <!--汇总项-->
         <controls:AssetSummary Grid.Row="0" DataContext="{Binding AssetSummaryViewModel}"/>
 
-        <!--DataCard Item项-->
+        <!--DataCard Item项 绑定特殊的数据上下文-->
         <controls:MajorIndexListing Grid.Row="1" Margin="0 10" DataContext="{Binding MajorIndexListingViewModel}"/>
     </Grid>
 </UserControl>

@@ -20,8 +20,9 @@ namespace SimpleTrader.FinancialModelingPrepAPI.Services
 
         public async Task<MajorIndex> GetMajorIndex(MajorIndexType indexType)
         {
+            //并发Http请求
             string uri = "majors-indexes/" + GetUriSuffix(indexType);
-
+            await Task.Delay(3000);
             MajorIndex majorIndex = await _client.GetAsync<MajorIndex>(uri);
             majorIndex.Type = indexType;
 
