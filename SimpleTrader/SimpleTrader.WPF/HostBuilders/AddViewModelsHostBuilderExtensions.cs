@@ -18,7 +18,7 @@ namespace SimpleTrader.WPF.HostBuilders
         {
             host.ConfigureServices(services =>
             {
-                services.AddTransient(CreateHomeViewModel);
+                services.AddTransient(CreateHomeViewModel); //按需创建HomeViewModel对象实例
                 services.AddTransient<PortfolioViewModel>();
                 services.AddTransient<BuyViewModel>();
                 services.AddTransient<SellViewModel>();
@@ -44,6 +44,7 @@ namespace SimpleTrader.WPF.HostBuilders
 
         private static HomeViewModel CreateHomeViewModel(IServiceProvider services)
         {
+            //创建HomeViewModel对象实例(每次都是一个)
             return new HomeViewModel(
                 services.GetRequiredService<AssetSummaryViewModel>(),
                 MajorIndexListingViewModel.LoadMajorIndexViewModel(services.GetRequiredService<IMajorIndexService>()));

@@ -6,6 +6,10 @@ using System.Text;
 
 namespace SimpleTrader.WPF.State.Navigators
 {
+    /// <summary>
+    /// 自定义导航Navigation功能
+    /// </summary>
+    /// <typeparam name="TViewModel"></typeparam>
     public class ViewModelDelegateRenavigator<TViewModel> : IRenavigator where TViewModel : ViewModelBase
     {
         private readonly INavigator _navigator;
@@ -19,6 +23,7 @@ namespace SimpleTrader.WPF.State.Navigators
 
         public void Renavigate()
         {
+            //每次都创建一个新的ViewModel对象实例
             _navigator.CurrentViewModel = _createViewModel();
         }
     }
